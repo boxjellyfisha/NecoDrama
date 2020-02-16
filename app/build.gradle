@@ -20,15 +20,39 @@ android {
         applicationId "com.kellyhong.necodrama"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            renderscriptDebuggable = false
+            jniDebuggable = true
+            debuggable = true
         }
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "state"
+    productFlavors {
+        dev {
+            dimension "state"
+            versionCode gitVersionCodeTime
+            versionName gitVersionName
+        }
+
+        prod {
+            dimension "state"
+            versionCode gitVersionCode
+            versionName gitVersionName
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 }
 
@@ -87,6 +111,9 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     // For Kotlin use kapt instead of annotationProcessor
     implementation "androidx.room:room-rxjava2:$room_version"
+
+    /* DateTime */
+    implementation 'org.threeten:threetenbp:1.4.1'
 
     /* test */
     testImplementation 'junit:junit:4.12'

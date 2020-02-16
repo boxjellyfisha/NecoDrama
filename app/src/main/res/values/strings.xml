@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NecoDrama</string>
+    <string name="search_empty">Sorry! No result found!</string>
+    <string name="loading">Loading…</string>
 </resources>

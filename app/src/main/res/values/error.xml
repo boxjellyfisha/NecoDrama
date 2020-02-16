@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="response_err_unknown">Got something wrong! Please try again!</string>
+    <string name="response_err_network">Please check your network!</string>
+    <string name="response_err_cancel">You have cancelled the action.</string>
+    <string name="response_err_expired">Please login again!</string>
+    <string name="response_err_no_member">You are not login!</string>
+    <string name="response_err_rebuild">Your certification has expired. Please sign in again!</string>
+</resources>

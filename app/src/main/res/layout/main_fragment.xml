@@ -5,16 +5,77 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainFragment">
+    tools:context=".ui.main.DramaListFragment">
 
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MainFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/et_search"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="@dimen/height_search_bar"
+        android:layout_height="@dimen/height_search_bar"
+        android:layout_marginStart="@dimen/triple_space"
+        android:padding="@dimen/half_space"
+        app:srcCompat="@drawable/ic_search_24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/et_search"
+        app:layout_constraintTop_toTopOf="@+id/et_search"
+        app:layout_constraintBottom_toBottomOf="@+id/et_search"/>
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_search_bar"
+        android:background="@null"
+        android:textSize="16sp"
+        android:paddingStart="@dimen/space"
+        android:paddingEnd="@dimen/space"
+        android:layout_marginTop="@dimen/triple_space"
+        android:layout_marginBottom="@dimen/double_space"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:maxLines="1"
+        android:hint="Type some keyword!"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintStart_toEndOf="@+id/iv_search"
+        app:layout_constraintEnd_toStartOf="@+id/iv_search_clear"/>
+
+    <ImageView
+        android:id="@+id/iv_search_clear"
+        android:layout_width="@dimen/height_search_bar"
+        android:layout_height="@dimen/height_search_bar"
+        android:layout_marginEnd="@dimen/triple_space"
+        android:padding="@dimen/half_space"
+        android:rotation="45"
+        android:src="@drawable/ic_add_circle_24dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_search"
+        app:layout_constraintTop_toTopOf="@+id/et_search"
+        app:layout_constraintBottom_toBottomOf="@+id/et_search"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginStart="@dimen/double_space_x"
+        android:layout_marginEnd="@dimen/double_space_x"
+        app:layout_constraintTop_toBottomOf="@+id/et_search"
+        app:layout_constraintBottom_toTopOf="@+id/rv_result"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:splitMotionEvents="false"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

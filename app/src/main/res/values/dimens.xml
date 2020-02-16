@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="half_space">2dp</dimen>
+    <dimen name="space">4dp</dimen>
+    <dimen name="space_x">6dp</dimen>
+    <dimen name="double_space">8dp</dimen>
+    <dimen name="double_space_x">10dp</dimen>
+    <dimen name="triple_space">12dp</dimen>
+    <dimen name="font_space">14dp</dimen>
+    <dimen name="quadruple_space">16dp</dimen>
+    <dimen name="fifth_space">20dp</dimen>
+    <dimen name="sixth_space">24dp</dimen>
+
+    <dimen name="radius">@dimen/triple_space</dimen>
+
+    <dimen name="elevation_dialog">@dimen/sixth_space</dimen>
+    <dimen name="elevation_action_bar">@dimen/space_x</dimen>
+    <dimen name="elevation_card">@dimen/space</dimen>
+
+
+    <dimen name="height_action_bar">56dp</dimen>
+    <dimen name="height_search_bar">24dp</dimen>
+    <dimen name="padding_progress">40dp</dimen>
+</resources>
