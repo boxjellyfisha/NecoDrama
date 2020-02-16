@@ -1,0 +1,70 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.ajoberstar:grgit:1.9.3'
+    }
+}
+
+import org.ajoberstar.grgit.Grgit
+
+ext {
+    versionTag = "0.0.0"
+
+    git = Grgit.open(currentDir: projectDir)
+
+    gitVersionName = git.describe()
+    gitVersionCode = git.tag.list().size()+1
+    gitVersionCodeTime = git.head().time
+}
+
+task printVersion {
+    println("Version Name: $gitVersionName")
+    println("Version Code: $gitVersionCode")
+    println("Version Code Time: $gitVersionCodeTime")
+    println("=====================================================")
+}
+
+task printRemote {
+    doLast {
+        git.remote.list().each {
+            println it
+        }
+    }
+}
+
+task tagPrintAll {
+    doLast {
+        def tags = git.tag.list()
+        println("Project Tags:")
+        if (tags.size > 0) {
+            tags.each {
+                println("name = ${it.getName()}; " +
+                    "commit = ${it.commit.getAbbreviatedId(6)}; " +
+                    "author = ${it.commit.author.name};")
+            }
+        } else {
+            println("there is no tags.")
+        }
+    }
+}
+
+task tagRelease {
+    description = 'Tags the current head with the project\'s version.'
+    doLast {
+        git.tag.add {
+            name = versionTag
+            message = "Release of $versionTag"
+        }
+    }
+}
+
+task tagRemove {
+    description = 'Clear the tag of current head with the project.'
+    doLast {
+        def remove = git.tag.list().get(git.tag.list().size - 1).getName()
+        git.tag.remove(names: [remove])
+        println("Remove tag : $remove")
+    }
+}
