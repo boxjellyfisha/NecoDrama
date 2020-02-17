@@ -17,12 +17,8 @@ import java.net.UnknownHostException
 abstract class ErrorConsumer: Consumer<Throwable> {
 
     abstract fun normalErr(error: BaseErrorException)
-    open fun doRetry() {}
-
     override fun accept(throwable: Throwable) {
         if(throwable is BaseErrorException) {
-            if(throwable.errorTip == BaseErrorException.OtherError.errorTip)
-                doRetry()
             normalErr(throwable)
         } else {
             normalErr(BaseErrorException.OtherError)

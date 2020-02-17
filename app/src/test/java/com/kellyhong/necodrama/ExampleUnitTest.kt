@@ -23,4 +23,18 @@ class ExampleUnitTest {
         val time = OffsetDateTime.parse(created)
         print(time.month)
     }
+
+    @Test
+    fun testKeywordTrans() {
+        val keyword = "101 kk==ji3 ".trim()
+        if(keyword.contains(" ")) {
+            var final = ""
+            val terms = keyword.split(" ")
+            for (term in terms) {
+                val tmp = term.replace(Regex("[^\\p{L}\\p{N}]"), "")
+                final += if(final.isEmpty()) "%$tmp%" else " AND %$tmp%"
+            }
+            print(final)
+        }
+    }
 }

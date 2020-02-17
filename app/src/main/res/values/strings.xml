@@ -2,4 +2,13 @@
     <string name="app_name">NecoDrama</string>
     <string name="search_empty">Sorry! No result found!</string>
     <string name="loading">Loading…</string>
+    <string name="search_bar_hint">Type some keywords!</string>
+    <string name="detail_sub_title_description">Description</string>
+    <string name="detail_sub_title_views">Views</string>
+    <string name="detail_sub_title_create">Create</string>
+    <string name="detail_no_content">----</string>
+    <string name="retry_load_drama">Loading data is failed.</string>
+    <string name="retry_search_drama">Searching data is failed.</string>
+    <string name="dialog_retry">Retry</string>
+    <string name="btn_see_more">See More</string>
 </resources>

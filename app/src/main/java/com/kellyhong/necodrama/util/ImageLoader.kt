@@ -12,11 +12,6 @@ object ImageLoader {
 	 */
 	private val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
 
-	// When URL doesn't change, however, image changes
-	// .signature(new StringSignature(yourVersionMetadata))
-
-	// .apply(RequestOptions().transforms(CenterCrop(), RoundedCorners(16)))
-
 	fun updatePhoto(view: ImageView, url: String, @DrawableRes placeholder: Int) {
 		GlideApp.with(view.context)
 				.load(url)
